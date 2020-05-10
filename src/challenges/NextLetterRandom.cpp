@@ -19,7 +19,7 @@ std::string NextLetterRandom::get_hint() {
   };
 
   this->show_hint = true;
-  return "a => ??? (Unspecified Number...)";
+  return "Caesar loved this type of cipher...";
 }
 
 void NextLetterRandom::reset() {
