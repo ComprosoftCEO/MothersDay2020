@@ -25,7 +25,7 @@ std::string RandomSubsitution::get_hint() {
     const char letter = random_letter();
     auto lookup       = this->lookup.find(letter);
     if (lookup != this->lookup.end()) {
-      return std::string(1, lookup->second) + " => " + std::string(1, lookup->first);
+      return std::string(1, lookup->second) + " = " + std::string(1, lookup->first);
     }
 
   } while (true);

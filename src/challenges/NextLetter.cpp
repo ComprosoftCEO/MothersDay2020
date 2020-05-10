@@ -9,5 +9,5 @@ std::string NextLetter::get_scrambled_word(const std::string& normal_word) {
 }
 
 std::string NextLetter::get_hint() {
-  return "a => b";
+  return "a = b";
 }

@@ -15,7 +15,7 @@ std::string NextLetterRandom::get_hint() {
 
   if (this->show_hint) {
     const char l = random_letter();
-    return std::string(1, l) + " => " + std::string(1, shift_letter(l, this->n));
+    return "To encrypt: " + std::string(1, shift_letter(l, this->n)) + " --> " + std::string(1, l);
   };
 
   this->show_hint = true;

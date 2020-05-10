@@ -27,12 +27,12 @@ std::string VowelsToSymbols::get_hint() {
     const char random_vowel = ALL_VOWELS[rand() % NUM_VOWELS];
     auto lookup             = this->lookup.find(random_vowel);
     if (lookup != this->lookup.end()) {
-      return std::string(1, lookup->second) + " => " + std::string(1, lookup->first);
+      return std::string(1, lookup->second) + " = " + std::string(1, lookup->first);
     }
   }
 
   this->show_lookup = true;
-  return "Which types of letters are missing?";
+  return "Which types of letters have been changed?";
 }
 
 void VowelsToSymbols::reset() {

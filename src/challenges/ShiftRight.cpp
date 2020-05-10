@@ -11,6 +11,5 @@ std::string ShiftRight::get_scrambled_word(const std::string& normal_word) {
 }
 
 std::string ShiftRight::get_hint() {
-
-  return "Every letter is >>";
+  return "Try moving every letter to the -->";
 }

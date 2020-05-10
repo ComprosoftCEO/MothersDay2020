@@ -19,7 +19,7 @@ std::string ShiftLeftReverse::get_hint() {
 
   switch (this->hint_number) {
     case 1:
-      return "Try by shifting every letter first...";
+      return "Start by shifting every letter left...";
 
     default:
       return "Have you tried then reversing the word?";
