@@ -1,5 +1,16 @@
+#include <Game.h>
 #include <Words.h>
+#include <challenges/ReversedWord.h>
 #include <iostream>
+
+// All challenges
+static ReversedWord reversed;
+
+static const std::vector<Challenge*> ALL_CHALLENGES = {&reversed,
+
+                                                       &reversed,
+
+                                                       &reversed};
 
 int main(int argc, char** argv) {
 
@@ -13,9 +24,6 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-  Words w;
-
-  for (int i = 0; i < 5; ++i) { std::cout << w.next_word() << std::endl; }
-
-  return 0;
+  Game g(ALL_CHALLENGES);
+  g.play();
 }
