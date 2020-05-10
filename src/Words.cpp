@@ -55,6 +55,14 @@ const std::string& Words::next_word() {
     word_index = ((size_t) rand()) % ALL_WORDS.size();
   } while (this->used.find(word_index) != this->used.end());
 
+  // Don't reuse any words
   this->used.insert(word_index);
+  this->last_word = word_index;
+
   return ALL_WORDS[word_index];
+}
+
+const std::string& Words::repick_word() {
+  this->used.erase(this->last_word);
+  return this->next_word();
 }
