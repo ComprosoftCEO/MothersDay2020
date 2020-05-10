@@ -3,9 +3,8 @@
 #include <readline/history.h>
 #include <readline/readline.h>
 
-static bool play_round(Challenge* challenge, const std::string& word);
 static void show_help();
-static bool really_quit();
+static bool confirm(const std::string& message);
 
 // Trim string
 static std::string ltrim(const std::string& s);
@@ -29,7 +28,7 @@ bool Game::play() {
   size_t level = 1;
   for (auto challenge: this->all_challenges) {
     std::cout << "Level " << level++ << ":" << std::endl;
-    if (!play_round(challenge, this->my_words.next_word())) { return false; }
+    if (!this->play_round(challenge)) { return false; }
   }
 
   return true; /* All levels complete */
@@ -38,8 +37,12 @@ bool Game::play() {
 //
 // Play a single round
 //
-static bool play_round(Challenge* challenge, const std::string& word) {
+bool Game::play_round(Challenge* challenge) {
 
+  std::string word = this->my_words.next_word();
+
+top:
+  challenge->reset();
   std::cout << "Word to decode: " << challenge->get_scrambled_word(word) << std::endl << std::endl;
   std::string prev_line;
 
@@ -67,8 +70,20 @@ static bool play_round(Challenge* challenge, const std::string& word) {
       std::cout << challenge->get_hint() << std::endl;
       continue;
     }
+    if (line == "new") {
+      if (confirm("Reset Puzzle?")) {
+        word = this->my_words.repick_word();
+        std::cout << std::endl;
+        goto top;
+      }
+      continue;
+    }
+    if (line == "cheat") {
+      std::cout << word << std::endl;
+      continue;
+    }
     if (line == "quit") {
-      if (really_quit()) { return false; }
+      if (confirm("Really Quit?")) { return false; }
       continue;
     }
     if (line == word) {
@@ -85,14 +100,17 @@ static void show_help() {
   std::cout << "  help = Help screen" << std::endl;
   std::cout << "  word = Reshow the scrambled word" << std::endl;
   std::cout << "  hint = Ask a hint for the problem" << std::endl;
+  std::cout << "  new  = Pick a new word and reset the problem" << std::endl;
   std::cout << "  quit = Exit the program" << std::endl << std::endl;
   std::cout << "  <solution> = Solve the problem" << std::endl;
 }
 
-static bool really_quit() {
+static bool confirm(const std::string& message) {
+
+  const std::string prompt = message + " [Y|N] ";
   while (true) {
 
-    const char* next_line = readline("Really Quit? [Y|N] ");
+    const char* next_line = readline(prompt.c_str());
     if (next_line == NULL) { continue; }
 
     const std::string line(trim(next_line));

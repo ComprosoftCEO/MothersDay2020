@@ -17,6 +17,9 @@ public:
   bool play();
 
 private:
+  bool play_round(Challenge* challenge);
+
+private:
   Words my_words;
   std::vector<Challenge*> all_challenges;
 };
