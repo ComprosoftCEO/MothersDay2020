@@ -12,12 +12,14 @@ class NextLetterRandom final: public Challenge {
 public:
   NextLetterRandom();
 
-  std::string get_scrambled_word(const std::string& normal_word) const;
-  std::string get_hint() const;
+  std::string get_scrambled_word(const std::string& normal_word);
+  std::string get_hint();
+
+  void reset();
 
 private:
   size_t n;
-  size_t hint_number;
+  bool show_hint;
 };
 
 #endif /* Next Letter header Included */

@@ -7,8 +7,19 @@ PROGRAM=MothersDay2020.out
 OBJECTS = \
 	Main.o \
 	src/Words.o \
+	src/Challenge.o \
 	src/Game.o \
+	src/helpers.o \
 	src/challenges/ReversedWord.o \
+	src/challenges/InterweavedLetters.o \
+	src/challenges/NextLetter.o \
+	src/challenges/NextLetterRandom.o \
+	src/challenges/RandomSubsitution.o \
+	src/challenges/ShiftLeftReverse.o \
+	src/challenges/ShiftRight.o \
+	src/challenges/SwapHalves.o \
+	src/challenges/SwappedFirstLast.o \
+	src/challenges/VowelsToSymbols.o \
 
 
 

@@ -10,8 +10,8 @@
 class ReversedWord final: public Challenge {
 
 public:
-  std::string get_scrambled_word(const std::string& normal_word) const;
-  std::string get_hint() const;
+  std::string get_scrambled_word(const std::string& normal_word);
+  std::string get_hint();
 };
 
 #endif /* Reversed Word Header Included */
