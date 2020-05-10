@@ -33,3 +33,6 @@
 
 # Vim .swp files
 *.sw*
+
+# Words file
+words.txt

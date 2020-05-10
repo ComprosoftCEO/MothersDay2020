@@ -6,6 +6,7 @@ PROGRAM=MothersDay2020.out
 
 OBJECTS = \
 	Main.o \
+	src/Words.o \
 
 
 
